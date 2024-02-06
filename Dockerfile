@@ -14,9 +14,10 @@ RUN add-apt-repository ppa:unit193/encryption
 RUN apt-get update && apt-get install -y \
   sudo \
   dialog \
-  veracrypt
+  veracrypt \
+  dumb-init
 
 COPY . .
 
 USER appuser
-CMD [ "bash", "run.sh" ]
+CMD [ "dumb-init", "bash", "run.sh" ]
